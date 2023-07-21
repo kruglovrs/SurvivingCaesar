@@ -31,7 +31,8 @@ public class Main {
     }
 
     private static void encrypt(String src, int key) {
-        String dest = "C:\\Users\\Acer\\OneDrive\\Рабочий стол\\Zomro_new.txt";
+        int index = src.indexOf(".");
+        String dest = src.substring(0, index) + "_Caesar";
         try(FileReader reader = new FileReader(src);
             FileWriter writer = new FileWriter(dest))
         {
