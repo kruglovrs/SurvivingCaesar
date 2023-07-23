@@ -29,10 +29,10 @@ public class CaesarCipherEncryption {
                 writer.write(encryptedChar);
             }
 
-            System.out.println("Файл успешно зашифрован и сохранен в " + outputFilePath);
+            System.out.println("Файл успішно зашифрований і збережений у " + outputFilePath);
 
         } catch (IOException e) {
-            System.err.println("Ошибка при шифровании файла: " + e.getMessage());
+            System.err.println("Помилка під час шифрування файлу: " + e.getMessage());
         }
     }
 
@@ -56,11 +56,11 @@ public class CaesarCipherEncryption {
         ukrainianAlphabet.add(' ');
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите путь к исходному текстовому файлу: ");
+        System.out.print("Введіть шлях до вихідного текстового файлу: ");
         String inputFilePath = scanner.nextLine();
-        System.out.print("Введите путь для сохранения зашифрованного файла: ");
+        System.out.print("Введіть шлях для збереження зашифрованого файлу: ");
         String outputFilePath = scanner.nextLine();
-        System.out.print("Введите ключ для шифра Цезаря (целое число): ");
+        System.out.print("Введіть ключ для шифру Цезаря (ціле число): ");
         int shift = scanner.nextInt();
 
         CaesarCipherEncryption.encryptFile(inputFilePath, outputFilePath, shift, ukrainianAlphabet);
