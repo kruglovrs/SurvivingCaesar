@@ -56,13 +56,19 @@ public class CaesarCipherEncryption {
         ukrainianAlphabet.add(' ');
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Введіть шлях до вихідного текстового файлу: ");
-        String inputFilePath = scanner.nextLine();
-        System.out.print("Введіть шлях для збереження зашифрованого файлу: ");
-        String outputFilePath = scanner.nextLine();
-        System.out.print("Введіть ключ для шифру Цезаря (ціле число): ");
-        int shift = scanner.nextInt();
+        System.out.println("Якщо ви хочете зашифрувати повідомлень введіть 1, якщо розшифрувати введіть 0.");
+        String choice = scanner.nextLine();
+        if (choice.equals("1")) {
+            System.out.print("Введіть шлях до вихідного текстового файлу: ");
+            String inputFilePath = scanner.nextLine();
+            System.out.print("Введіть шлях для збереження зашифрованого файлу: ");
+            String outputFilePath = scanner.nextLine();
+            System.out.print("Введіть ключ для шифру Цезаря (ціле число): ");
+            int shift = scanner.nextInt();
 
-        CaesarCipherEncryption.encryptFile(inputFilePath, outputFilePath, shift, ukrainianAlphabet);
+            CaesarCipherEncryption.encryptFile(inputFilePath, outputFilePath, shift, ukrainianAlphabet);
+        } else {
+            System.out.println("Поки ще не готово");
+        }
     }
 }
