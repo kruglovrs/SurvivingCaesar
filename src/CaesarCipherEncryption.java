@@ -4,31 +4,40 @@ import java.util.Scanner;
 
 public class CaesarCipherEncryption {
 
-    private static char encryptChar(char ch, int shift, ArrayList<Character> alphabet) {
-        if (Character.isLetter(ch)) {
-            int alphabetSize = alphabet.size();
-            int currentIndex = alphabet.indexOf(Character.toUpperCase(ch));
-            int newIndex = (currentIndex + shift) % alphabetSize;
+    private static char encryptChar(char ch, int shift, ArrayList<Character> ukrainianAlphabet) {
+        if (Character.isLetterOrDigit(ch)) {
+            int alphabetSize = ukrainianAlphabet.size();
+            int currentIndex = ukrainianAlphabet.indexOf(Character.toUpperCase(ch));
+            int newIndex = 0;
+            if (shift > 0) {
+                newIndex = (currentIndex + shift) % alphabetSize;
+               }  else if (shift < 0) {
+                newIndex = (currentIndex - shift + alphabetSize) % alphabetSize;
+            }
             if (Character.isLowerCase(ch)) {
-                return Character.toLowerCase(alphabet.get(newIndex));
+                return Character.toLowerCase(ukrainianAlphabet.get(newIndex));
             } else {
-                return alphabet.get(newIndex);
+                return ukrainianAlphabet.get(newIndex);
             }
         }
         return ch;
 
     }
 
-    private static char decryptChar(char ch, int shift, ArrayList<Character> alphabet) {
-        if (Character.isLetter(ch)) {
-            int alphabetSize = alphabet.size();
-            int currentIndex = alphabet.indexOf(Character.toUpperCase(ch));
-            //int newIndex = (currentIndex + shift) % alphabetSize;
-            int newIndex = (currentIndex - shift) % alphabetSize;
+    private static char decryptChar(char ch, int shift, ArrayList<Character> ukrainianAlphabet) {
+        if (Character.isLetterOrDigit(ch)) {
+            int alphabetSize = ukrainianAlphabet.size();
+            int currentIndex = ukrainianAlphabet.indexOf(Character.toUpperCase(ch));
+            int newIndex = 0;
+            if (shift > 0) {
+                newIndex = (currentIndex - shift) % alphabetSize;
+            }  else if (shift < 0) {
+                newIndex = (currentIndex - shift + alphabetSize) % alphabetSize;
+            }
             if (Character.isLowerCase(ch)) {
-                return Character.toLowerCase(alphabet.get(newIndex));
+                return Character.toLowerCase(ukrainianAlphabet.get(newIndex));
             } else {
-                return alphabet.get(newIndex);
+                return ukrainianAlphabet.get(newIndex);
             }
         }
         return ch;
@@ -78,7 +87,7 @@ public class CaesarCipherEncryption {
         ukrainianAlphabet.add('І');
         ukrainianAlphabet.add('Ї');
         ukrainianAlphabet.add('Ґ');
-        ukrainianAlphabet.add('.');
+        ukrainianAlphabet.add('\u002E');
         ukrainianAlphabet.add(',');
         ukrainianAlphabet.add('"');
         ukrainianAlphabet.add(':');
@@ -86,6 +95,7 @@ public class CaesarCipherEncryption {
         ukrainianAlphabet.add('!');
         ukrainianAlphabet.add('?');
         ukrainianAlphabet.add(' ');
+        System.out.println(ukrainianAlphabet);
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Якщо ви хочете зашифрувати повідомлень введіть 1, якщо розшифрувати введіть 0.");
